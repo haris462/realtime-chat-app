@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="icon" type="image/x-icon" href="Gemini_Generated_Image_i4wqtei4wqtei4wq.png">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="chat-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-profile">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <span class="user-name" id="loggedInUser">Loading...</span>
+                        <span class="user-status">Online</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-tabs">
+                <button class="tab-btn active" data-tab="rooms">Rooms</button>
+                <button class="tab-btn" data-tab="direct">Direct Messages</button>
+            </div>
+            
+            <div class="tab-content active" id="roomsTab">
+                <div class="section-header">
+                    <h3>Chat Rooms</h3>
+                    <button id="createRoomBtn" class="btn-icon" title="Create Room">+</button>
+                </div>
+                <div id="roomList" class="room-list"></div>
+            </div>
+            
+            <div class="tab-content" id="directTab">
+                <div class="section-header">
+                    <h3>Direct Messages</h3>
+                    <button id="newDMBtn" class="btn-icon" title="New Message">+</button>
+                </div>
+                <div id="dmList" class="dm-list"></div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button id="themeToggle" class="theme-toggle">
+                    <div class="theme-toggle-switch">
+                        <div class="theme-toggle-slider"></div>
+                    </div>
+                </button>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+            </div>
+        </aside>
+        
+        <main class="chat-main">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <h2 id="currentRoomName">Select a room or conversation</h2>
+                    <div id="userCount" class="user-count"></div>
+                </div>
+                <div class="chat-header-right">
+                    <button id="videoCallBtn" class="btn-icon" title="Video Call" style="display: none;">📹</button>
+                    <button id="voiceCallBtn" class="btn-icon" title="Voice Call" style="display: none;">📞</button>
+                    <button id="addUserBtn" class="btn-icon" title="Add User to Room" style="display: none;">➕</button>
+                </div>
+            </div>
+            
+            <div id="userList" class="user-list"></div>
+            
+            <div id="messageContainer" class="message-container"></div>
+            
+            <div id="typingIndicator" class="typing-indicator"></div>
+            
+            <div class="message-input-container">
+                <input type="file" id="fileInput" style="display: none;" accept="image/*,.pdf,.doc,.docx,.txt">
+                <button id="attachBtn" class="btn-attach" title="Attach file" disabled>📎</button>
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Type a message..." 
+                    disabled
+                >
+                <button id="sendBtn" class="btn-primary" disabled>Send</button>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Create Room Modal -->
+    <div id="createRoomModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Create New Room</h2>
+            <form id="createRoomForm">
+                <div class="form-group">
+                    <label for="roomName">Room Name</label>
+                    <input type="text" id="roomName" required>
+                </div>
+                <div class="form-group">
+                    <label for="roomDescription">Description (optional)</label>
+                    <textarea id="roomDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="isPrivateRoom">
+                        Private Room (invite only)
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary">Create Room</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- New DM Modal -->
+    <div id="newDMModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>New Direct Message</h2>
+            <div class="form-group">
+                <label for="searchUsers">Search Users</label>
+                <input type="text" id="searchUsers" placeholder="Type username...">
+            </div>
+            <div id="userSearchResults" class="user-search-results"></div>
+        </div>
+    </div>
+    
+    <!-- Add User to Room Modal -->
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Add User to Room</h2>
+            <div class="form-group">
+                <label for="searchUsersForRoom">Search Users</label>
+                <input type="text" id="searchUsersForRoom" placeholder="Type username...">
+            </div>
+            <div id="userSearchResultsForRoom" class="user-search-results"></div>
+        </div>
+    </div>
+    
+    <!-- Video Call Modal -->
+    <div id="videoCallModal" class="modal">
+        <div class="modal-content video-call-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="callStatus">Calling...</h2>
+            <div class="video-container">
+                <video id="localVideo" autoplay muted playsinline></video>
+                <video id="remoteVideo" autoplay playsinline></video>
+            </div>
+            <div class="call-controls">
+                <button id="toggleMute" class="btn-call">🎤</button>
+                <button id="toggleVideo" class="btn-call">📹</button>
+                <button id="endCall" class="btn-call btn-danger">📞 End Call</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@latest/dist/browser/signalr.min.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

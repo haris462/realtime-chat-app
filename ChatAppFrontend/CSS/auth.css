@@ -1,0 +1,147 @@
+/* ============================================
+   AUTH.CSS — Login / Register pages
+   Depends on: base.css
+   ============================================ */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-box {
+    background: var(--bg-primary);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-large);
+    width: 100%;
+    max-width: 400px;
+    position: relative; /* needed for theme toggle */
+}
+
+.auth-box h1 {
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* ============================================
+   FORM GROUPS
+   ============================================ */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--input-border);
+    border-radius: 5px;
+    font-size: 14px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    padding: 8px 16px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-hover);
+}
+
+/* ============================================
+   FEEDBACK MESSAGES
+   ============================================ */
+
+.error-message {
+    margin-top: 15px;
+    padding: 10px;
+    background: #ffebee;
+    color: #c62828;
+    border-radius: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+.auth-link {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.auth-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   THEME TOGGLE (auth page)
+   ============================================ */
+
+.auth-box .theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

@@ -1,0 +1,191 @@
+/* ============================================
+   BASE.CSS — Reset, variables, and global styles
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+}
+
+/* ============================================
+   CSS VARIABLES (Light Mode)
+   ============================================ */
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ecf0f1;
+    --bg-sidebar: #2c3e50;
+    --bg-sidebar-header: #1a252f;
+    --bg-auth: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    --text-primary: #333;
+    --text-secondary: #555;
+    --text-light: #666;
+    --text-muted: #7f8c8d;
+    --text-white: #ffffff;
+
+    --border-color: #ddd;
+    --border-light: #e0e0e0;
+
+    --message-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #e0e0e0;
+
+    --primary-color: #667eea;
+    --primary-hover: #5568d3;
+    --secondary-color: #f44336;
+    --secondary-hover: #d32f2f;
+
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-large: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   DARK MODE VARIABLES
+   ============================================ */
+
+body.dark-mode {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d30;
+    --bg-sidebar: #1e1e1e;
+    --bg-sidebar-header: #121212;
+    --bg-auth: linear-gradient(135deg, #2d2d30 0%, #1e1e1e 100%);
+
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-light: #9a9a9a;
+    --text-muted: #808080;
+    --text-white: #ffffff;
+
+    --border-color: #3d3d3d;
+    --border-light: #404040;
+
+    --message-bg: #252526;
+    --input-bg: #1e1e1e;
+    --input-border: #3d3d3d;
+
+    --primary-color: #7c8df8;
+    --primary-hover: #6b7ee6;
+    --secondary-color: #f44336;
+    --secondary-hover: #d32f2f;
+
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --shadow-large: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   GLOBAL APPLY
+   ============================================ */
+
+body {
+    background: var(--bg-auth);
+    color: var(--text-primary);
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+
+body,
+.auth-box,
+.form-group input,
+.chat-container,
+.sidebar,
+.chat-main,
+.chat-header,
+.message-content,
+.message-input-container,
+#messageInput {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #2d2d30;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* ============================================
+   FORM ELEMENTS (shared)
+   ============================================ */
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--input-border);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        transition: left 0.3s;
+        z-index: 100;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .chat-main {
+        width: 100%;
+    }
+}

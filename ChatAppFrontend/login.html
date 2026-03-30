@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Chat App</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <!-- Dark mode toggle -->
+            <div class="theme-toggle" id="themeToggle">
+                <div class="theme-toggle-switch">
+                    <div class="theme-toggle-slider"></div>
+                </div>
+                <span class="theme-toggle-label">Dark Mode</span>
+            </div>
+            
+            <h1>Login to Chat</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <div id="error" class="error-message"></div>
+            </form>
+            <p class="auth-link">Don't have an account? <a href="register.html">Register</a></p>
+        </div>
+    </div>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

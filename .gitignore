@@ -1,0 +1,43 @@
+# .NET
+**/bin/
+**/obj/
+**/*.user
+**/*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+appsettings.Development.json
+**/*.log
+**/launchSettings.json
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Uploads (don't commit user files)
+**/wwwroot/uploads/*
+!**/wwwroot/uploads/.gitkeep
+
+# Environment files
+.env
+.env.local
+
+# Node modules (if any)
+node_modules/
+
+# Migrations (optional - include if you want)
+# **/Migrations/
