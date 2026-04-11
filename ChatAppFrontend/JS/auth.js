@@ -1,4 +1,4 @@
-const API_URL = 'https://realtime-chat-app-beryl-nu.vercel.app/api';
+const API_URL = 'http://localhost:5278/api';
 
 // Check if already logged in
 if (localStorage.getItem('token')) {

@@ -1,5 +1,5 @@
-const API_URL = 'https://realtime-chat-app-beryl-nu.vercel.app/api';
-const HUB_URL = 'https://realtime-chat-app-beryl-nu.vercel.app/chathub';
+const API_URL = 'http://localhost:5278/api';
+const HUB_URL = 'http://localhost:5278/chathub';
 
 // Check authentication
 const token = localStorage.getItem('token');
