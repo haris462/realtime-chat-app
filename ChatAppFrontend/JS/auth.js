@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5278/api';
+const API_URL = 'https://realtime-chat-app-seven-dusky-95.vercel.app/api';
 
 // Check if already logged in
 if (localStorage.getItem('token')) {

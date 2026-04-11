@@ -1,5 +1,5 @@
-const API_URL = 'http://localhost:5278/api';
-const HUB_URL = 'http://localhost:5278/chathub';
+const API_URL = 'https://realtime-chat-app-seven-dusky-95.vercel.app/api';
+const HUB_URL = 'https://realtime-chat-app-seven-dusky-95.vercel.app/chathub';
 
 // Check authentication
 const token = localStorage.getItem('token');
